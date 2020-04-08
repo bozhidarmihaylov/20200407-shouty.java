@@ -13,6 +13,6 @@ public class Coordinate {
         // TODO: actually calculate distance between the coordinates.
         //       e.g. return Math.abs(x - other.x);
 
-        return 0;
+        return (int)Math.round(Math.sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y)));
     }
 }
