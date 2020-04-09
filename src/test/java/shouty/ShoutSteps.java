@@ -6,6 +6,7 @@ import cucumber.api.java.en.When;
 
 import static java.util.Collections.emptyMap;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class ShoutSteps {
@@ -17,18 +18,23 @@ public class ShoutSteps {
         shouty.setLocation(person, new Coordinate(xCoord, yCoord));
     }
 
-    @When("Sean shouts")
-    public void sean_shouts() {
-        shouty.shout("Sean", ARBITRARY_MESSAGE);
+    @When("{word} shouts")
+    public void person_shouts(String person) {
+        shouty.shout(person, ARBITRARY_MESSAGE);
     }
 
-    @Then("Lucy should hear Sean")
-    public void lucy_should_hear_sean() {
-        assertEquals(1, shouty.getShoutsHeardBy("Lucy").size());
+    @Then("{word} should hear Sean")
+    public void listener_should_hear_sean(String listener) {
+        assertEquals(1, shouty.getShoutsHeardBy(listener).size());
     }
 
-    @Then("Lucy should hear nothing")
-    public void lucy_should_hear_nothing() {
-        assertEquals(emptyMap(), shouty.getShoutsHeardBy("Lucy"));
+    @Then("{word} should hear nothing")
+    public void person_should_hear_nothing(String person) {
+        assertEquals(emptyMap(), shouty.getShoutsHeardBy(person));
+    }
+
+    @Then("{word} should not hear Oscar")
+    public void listener_should_hear_oskar(String listener) {
+        assertTrue(!shouty.getShoutsHeardBy(listener).containsValue("Oscar"));
     }
 }
