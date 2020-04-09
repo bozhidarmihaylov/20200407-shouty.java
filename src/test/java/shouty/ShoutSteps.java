@@ -13,23 +13,6 @@ import java.util.Map;
 import static java.util.Collections.emptyMap;
 import static org.junit.Assert.*;
 
-
-class PersonLocation {
-    PersonLocation(String name, int x, int y) {
-        this.name = name;
-        this.x = x;
-        this.y = y;
-    }
-
-    private String name;
-    private int x;
-    private int y;
-
-    String getName() {  return name; }
-    int getX() {  return x; }
-    int getY() {  return y; }
-}
-
 public class ShoutSteps {
     private static final String ARBITRARY_MESSAGE = "Hello, world";
     private final Shouty shouty = new Shouty();
