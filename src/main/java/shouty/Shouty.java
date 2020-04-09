@@ -28,10 +28,12 @@ public class Shouty {
 
         for (Map.Entry<String, List<String> > entry : shouts.entrySet()) {
             String shouter = entry.getKey();
-            List<String> personsShouts = entry.getValue();
-            int distance = locations.get(listener).distanceFrom(locations.get(shouter));
-            if (distance < MESSAGE_RANGE)
-                shoutsHeard.put(shouter, personsShouts);
+            if (!shouter.equals(listener)) {
+                List<String> personsShouts = entry.getValue();
+                int distance = locations.get(listener).distanceFrom(locations.get(shouter));
+                if (distance < MESSAGE_RANGE)
+                    shoutsHeard.put(shouter, personsShouts);
+            }
         }
 
         return shoutsHeard;
