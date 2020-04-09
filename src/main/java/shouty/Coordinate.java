@@ -10,6 +10,10 @@ public class Coordinate {
     }
 
     public int distanceFrom(Coordinate other) {
-        return (int) Math.sqrt((x - other.x) * (x - other.x) + (y - other.y) * (y - other.y));
+        // TODO: actually calculate distance between the coordinates.
+        //       e.g. return Math.abs(x - other.x);
+
+        Coordinate v = new Coordinate(x - other.x, y - other.y);
+        return (int)Math.round(Math.sqrt(v.x * v.x + v.y * v.y));
     }
 }
