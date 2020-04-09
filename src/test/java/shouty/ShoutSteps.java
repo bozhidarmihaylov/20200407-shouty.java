@@ -32,8 +32,8 @@ public class ShoutSteps {
         assertEquals(emptyMap(), shouty.getShoutsHeardBy(person));
     }
 
-    @Then("{word} should not hear Oscar")
-    public void listener_should_hear_oskar(String listener) {
-        assertFalse(shouty.getShoutsHeardBy(listener).containsValue("Oscar"));
+    @Then("{word} should not hear {word}")
+    public void listener_should_hear_shouter(String listener, String shouter) {
+        assertFalse(shouty.getShoutsHeardBy(listener).containsValue(shouter));
     }
 }
