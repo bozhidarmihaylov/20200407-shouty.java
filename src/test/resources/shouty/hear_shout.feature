@@ -24,6 +24,5 @@ Feature: Hear Shout
     But Lucy should hear Sean
 
   Scenario: Own shouts should not be heard
-    Given Sean is at 0, 0
     When Sean shouts
     Then Sean should not hear Sean
