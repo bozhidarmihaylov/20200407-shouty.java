@@ -1,13 +1,30 @@
 package shouty;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
+
+import java.util.List;
+import java.util.Map;
 
 import static java.util.Collections.emptyMap;
 import static org.junit.Assert.*;
 
+
+class PersonLocation {
+    PersonLocation(String name, int x, int y) {
+        this.name = name;
+        this.x = x;
+        this.y = y;
+    }
+
+    String name;
+    int x;
+    int y;
+}
 
 public class ShoutSteps {
     private static final String ARBITRARY_MESSAGE = "Hello, world";
@@ -36,5 +53,12 @@ public class ShoutSteps {
     @Then("{word} should not hear {word}")
     public void listener_should_hear_shouter(String listener, String shouter) {
         assertFalse(shouty.getShoutsHeardBy(listener).containsValue(shouter));
+    }
+
+    @Given("people are located at")
+    public void peopleAreLocatedAt(List<PersonLocation> personLocationList) {
+        for (PersonLocation personLocation: personLocationList) {
+            shouty.setLocation(personLocation.name, new Coordinate(personLocation.x, personLocation.y));
+        }
     }
 }
