@@ -5,8 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import static java.util.Collections.emptyMap;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class ShoutSteps {
@@ -35,6 +34,6 @@ public class ShoutSteps {
 
     @Then("{word} should not hear Oscar")
     public void listener_should_hear_oskar(String listener) {
-        assertTrue(!shouty.getShoutsHeardBy(listener).containsValue("Oscar"));
+        assertFalse(shouty.getShoutsHeardBy(listener).containsValue("Oscar"));
     }
 }
