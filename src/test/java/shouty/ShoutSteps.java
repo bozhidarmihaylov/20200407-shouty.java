@@ -48,4 +48,10 @@ public class ShoutSteps {
             shouty.setLocation(personLocation.getName(), new Coordinate(personLocation.getX(), personLocation.getY()));
         }
     }
+
+    @Then("{word} should hear {int} shouts from {word}")
+    public void listenerShouldHearShoutsFromShouter(String listener, Integer shoutCount, String shouter) {
+        List<String> shoutsHeardFromShouter = shouty.getShoutsHeardBy(listener).get(shouter);
+        assertEquals(shoutCount.intValue(), shoutsHeardFromShouter.size());
+    }
 }
