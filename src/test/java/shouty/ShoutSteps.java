@@ -21,9 +21,13 @@ class PersonLocation {
         this.y = y;
     }
 
-    String name;
-    int x;
-    int y;
+    private String name;
+    private int x;
+    private int y;
+
+    String getName() {  return name; }
+    int getX() {  return x; }
+    int getY() {  return y; }
 }
 
 public class ShoutSteps {
@@ -58,7 +62,7 @@ public class ShoutSteps {
     @Given("people are located at")
     public void peopleAreLocatedAt(List<PersonLocation> personLocationList) {
         for (PersonLocation personLocation: personLocationList) {
-            shouty.setLocation(personLocation.name, new Coordinate(personLocation.x, personLocation.y));
+            shouty.setLocation(personLocation.getName(), new Coordinate(personLocation.getX(), personLocation.getY()));
         }
     }
 }
