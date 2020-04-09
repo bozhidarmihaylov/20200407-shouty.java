@@ -4,11 +4,11 @@ Feature: Hear Shout
 
   Scenario Outline: only hear in-range shouts
     Given Lucy is at 0, 0
-    And Sean is at <location>
+    And Sean is at <Sean location>
     When Sean shouts
-    Then Lucy should hear <heard>
+    Then Lucy should hear <what Lucy hears>
     Examples: some simple examples
-      | location       | heard           |
+      | Sean location  | what Lucy hears |
       | 0, 900         | Sean            |
       | 800, 800       | nothing         |
 
